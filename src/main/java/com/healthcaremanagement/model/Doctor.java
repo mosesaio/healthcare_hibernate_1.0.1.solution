@@ -1,4 +1,4 @@
-package healthcaremanagement.model;
+package com.healthcaremanagement.model;
 
 import jakarta.persistence.*;
 

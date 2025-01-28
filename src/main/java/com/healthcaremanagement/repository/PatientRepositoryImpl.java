@@ -1,6 +1,6 @@
-package healthcare.repository;
+package com.healthcaremanagement.repository;
 
-import healthcare.model.Patient;
+import com.healthcaremanagement.model.Patient;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

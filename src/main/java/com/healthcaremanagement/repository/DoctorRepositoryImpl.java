@@ -1,6 +1,6 @@
-package healthcaremanagement.repository;
+package com.healthcaremanagement.repository;
 
-import healthcaremanagement.model.Doctor;
+import com.healthcaremanagement.model.Doctor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -40,7 +40,7 @@ public class DoctorRepositoryImpl{
     public void deleteDoctor(int doctorId) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            Doctor doctor = session.get(Doctor.class, doctorID);
+            Doctor doctor = session.get(Doctor.class, doctorId);
             if (doctor != null) {
                 session.delete(doctor);
             }

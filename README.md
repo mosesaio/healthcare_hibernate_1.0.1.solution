@@ -13,7 +13,7 @@ Implement the `Doctor` class and `DoctorRepositoryImpl` to manage doctor-related
 #### **Tasks:**
 
 1. **Create Doctor Model Class:**
-   - **Path**: `com.healthcaremanagement.model`
+   - **Path**: `com.com.healthcaremanagement.model`
    - **Class Name**: `Doctor`
    - **Attributes**:
      - `int doctorId`: Represents the unique identifier for each doctor.
@@ -33,7 +33,7 @@ Implement the `Doctor` class and `DoctorRepositoryImpl` to manage doctor-related
    - **Entity Lifecycle**: Understanding the lifecycle of a Hibernate entity (Transient, Persistent, Detached) is important when dealing with CRUD operations.
 
 2. **Implement DoctorRepository:**
-   - **Path**: `com.healthcaremanagement.repository`
+   - **Path**: `com.com.healthcaremanagement.repository`
    - **Class Name**: `DoctorRepositoryImpl`
    - **Methods**:
      - **Create Method**: `void createDoctor(Doctor doctor)`
@@ -81,7 +81,7 @@ Implement the `Appointment` class and `AppointmentRepositoryImpl` to manage appo
 #### **Tasks:**
 
 1. **Create Appointment Model Class:**
-   - **Path**: `com.healthcaremanagement.model`
+   - **Path**: `com.com.healthcaremanagement.model`
    - **Class Name**: `Appointment`
    - **Attributes**:
      - `int appointmentId`: Represents the unique identifier for each appointment.
@@ -103,7 +103,7 @@ Implement the `Appointment` class and `AppointmentRepositoryImpl` to manage appo
    - **Date Handling**: Ensure the date format is consistent with what is expected by the database and the application.
 
 2. **Implement AppointmentRepository:**
-   - **Path**: `com.healthcaremanagement.repository`
+   - **Path**: `com.com.healthcaremanagement.repository`
    - **Class Name**: `AppointmentRepositoryImpl`
    - **Methods**:
      - **Create Method**: `void createAppointment(Appointment appointment)`
@@ -209,7 +209,7 @@ Refactor the `Main` class to include options for managing doctors and appointmen
 #### **Project Structure:**
 
 ```
-/src/main/java/com/healthcaremanagement/
+/src/main/java/com/com.healthcaremanagement/
 ├── dao/
 │   ├── DatabaseConnection.java (if needed for non-Hibernate setup)
 │   ├── PatientRepositoryImpl.java (starting point for repository)
