@@ -18,7 +18,7 @@ public class Doctor {
     private String lastName;
 
     @Column(name = "Specialty")
-    private String speciality;
+    private String specialty;
 
     @Column(name = "Email")
     private String email;
@@ -31,10 +31,10 @@ public class Doctor {
     }
 
     // Parameterized constructor for convenience
-    public Doctor(String firstName, String lastName, String speciality, String email) {
+    public Doctor(String firstName, String lastName, String specialty, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.speciality = speciality;
+        this.specialty = specialty;
         this.email = email;
     }
 
@@ -64,12 +64,12 @@ public class Doctor {
         this.lastName = lastName;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getSpecialty() {
+        return specialty;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
     public String getEmail() {
@@ -86,7 +86,7 @@ public class Doctor {
                 "doctorId=" + doctorId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", speciality='" + speciality + '\'' +
+                ", specialty='" + specialty + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
