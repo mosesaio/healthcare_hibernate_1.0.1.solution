@@ -18,7 +18,7 @@ public class DoctorRepositoryImpl{
     public void createDoctor(Doctor doctor) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(doctor);
+            session.persist(doctor); //Use persist for saving/creating
             transaction.commit();
         }
     }
@@ -32,7 +32,7 @@ public class DoctorRepositoryImpl{
     public void updateDoctor(Doctor doctor) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(doctor);
+            session.merge(doctor); // Use merge for updating
             transaction.commit();
         }
     }
@@ -42,7 +42,7 @@ public class DoctorRepositoryImpl{
             Transaction transaction = session.beginTransaction();
             Doctor doctor = session.get(Doctor.class, doctorId);
             if (doctor != null) {
-                session.delete(doctor);
+                session.remove(doctor); //Use remove for deleting
             }
             transaction.commit();
         }
