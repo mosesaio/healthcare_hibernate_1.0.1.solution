@@ -1,93 +1,51 @@
 package com.healthcaremanagement.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Doctors")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DoctorID")
+    @Column(name = "DoctorId")
     private int doctorId;
 
-    @Column(name = "FirstName")
+    @Column(name = "FirstName", nullable = false)
     private String firstName;
 
-    @Column(name = "LastName")
+    @Column(name = "LastName", nullable = false)
     private String lastName;
 
-    @Column(name = "Specialty")
+    @Column(name = "Specialty", nullable = false)
     private String specialty;
 
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true, nullable = false)
     private String email;
 
+    // One-to-Many relationship with Appointments
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Appointment> appointments = new ArrayList<>();
 
+    // One-to-One relationship with Office
+    @OneToOne(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Office office;
 
-
-
-    public Doctor() {
-    }
-
-    // Parameterized constructor for convenience
-    public Doctor(String firstName, String lastName, String specialty, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.specialty = specialty;
-        this.email = email;
-    }
-
-
-
-    public int getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "doctorId=" + doctorId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", specialty='" + specialty + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    // Many-to-Many relationship with Patients
+    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "Doctor_Patient",
+            joinColumns = @JoinColumn(name = "DoctorId"),
+            inverseJoinColumns = @JoinColumn(name = "PatientId")
+    )
+    private List<Patient> patients = new ArrayList<>();
 }
